@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Tester</title>
+    <link rel="shortcut icon" href="img/icon-t-64.png" type="image/png">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <img src="img/icon-t-64.png" alt="">
+            <div class="titles">
+                <p class="title">Tester</p>
+                <p class="subtitle">Образовательная платформа</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- MODAL WINDOW -->
+    <div class="settings-window">
+        <div class="settings">
+            <div class="settings-title">
+                <p class='title'>Настройки поиска</p>
+                <div id="close-settins-btn">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <div class="settings-content">
+                <div class="class-choice">
+                    <p>Класс</p>
+                    <div class="class-list">
+                        <button class="class-list-el" value='1'>1</button>
+                        <button class="class-list-el" value='2'>2</button>
+                        <button class="class-list-el" value='3'>3</button>
+                        <button class="class-list-el" value='4'>4</button>
+                        <button class="class-list-el" value='5'>5</button>
+                        <button class="class-list-el" value='6'>6</button>
+                        <button class="class-list-el" value='7'>7</button>
+                        <button class="class-list-el" value='8'>8</button>
+                        <button class="class-list-el" value='9'>9</button>
+                        <button class="class-list-el" value='10'>10</button>
+                        <button class="class-list-el" value='11'>11</button>
+                    </div>
+                </div>
+                
+                <div class="lesson-choice">
+                    <p>Предмет</p>
+                    <select class="lessons-list">
+                        <option value="">Математика</option>
+                        <option value="">Русский язык</option>
+                        <option value="">Английский язык</option>
+                        <option value="">Литература</option>
+                        <option value="">Информатика</option>
+                        <option value="">Физика</option>
+                        <option value="">Обществознание</option>
+                        <option value="">История</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div class="container">
+            <button class="settings-btn" id='open-sett-menu-btn'>
+                <span>Настроить поиск</span>
+                <i class="fa fa-sliders" aria-hidden="true"></i>
+            </button>
+            <div class="tests-list" id='tests-list'></div>
+        </div>
+    </main>
+
+    <script src='js/jquery-3.6.0.min.js'></script>
+    <script src='js/data.js'></script>
+    <script src='js/script-dist.js'></script>
+</body>
+
+</html>
