@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Tester</title>
+    <title></title>
     <link rel="shortcut icon" href="img/icon-t-64.png" type="image/png">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -51,20 +51,23 @@
                         <button class="class-list-el" value='10'>10</button>
                         <button class="class-list-el" value='11'>11</button>
                     </div>
+                        <button class="class-list-el class-list-el-active" value='all' style="
+                            margin: auto;
+                            width: auto;
+                            padding: 0 10px;
+                            margin-top: 10px;
+                        ">Все</button>
                 </div>
                 
                 <div class="lesson-choice">
                     <p>Предмет</p>
-                    <select class="lessons-list">
-                        <option value="">Математика</option>
-                        <option value="">Русский язык</option>
-                        <option value="">Английский язык</option>
-                        <option value="">Литература</option>
-                        <option value="">Информатика</option>
-                        <option value="">Физика</option>
-                        <option value="">Обществознание</option>
-                        <option value="">История</option>
+                    <select class="lessons-list" id='lessons-list'>
+                        <option value="all">Все</option>
                     </select>
+                </div>
+                
+                <div class="sortBtn-container">
+                    <button id='sortTestList-btn'>Поиск</button>
                 </div>
             </div>
         </div>

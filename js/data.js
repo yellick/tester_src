@@ -4,16 +4,13 @@ let siteName = 'Tester';
 let lessons = [
     {
         lesson: 'math',
+        lessonName: 'Математика',
         elementaryСlass: '1',
         finalClass: '11',
     },
     {
-        lesson: 'ru_lang',
-        elementaryСlass: '1',
-        finalClass: '11',
-    },
-    {
-        lesson: 'en_lang',
+        lesson: 'lang_ru',
+        lessonName: 'Русский язык',
         elementaryСlass: '1',
         finalClass: '11',
     },
@@ -23,7 +20,7 @@ let lessons = [
 let tests = [
     {
         lesson: lessons[0]['lesson'],
-        lessonName: 'Математика',
+        lessonName: lessons[0]['lessonName'],
         name: 'Сложение и вычитание',
         class: '1',
         questions: [
@@ -57,7 +54,7 @@ let tests = [
     
     {
         lesson: lessons[  number of lesson  ]['lesson'],
-        lessonName: '',
+        lessonName: lessons[  number of lesson  ]['lessonName'],
         name: '',
         class: '',
         questions: [
