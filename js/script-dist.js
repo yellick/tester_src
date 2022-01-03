@@ -3,6 +3,7 @@ function openSettingsWindow() {
     $('.settings-window').css('opacity', '1');
     $('.settings-window').addClass('settings-window-active');
 };
+
 function closeSettingsWindow() {
     $('.settings-window').css('opacity', '0');
     setTimeout(() => {
@@ -20,6 +21,7 @@ $('#sortTestList-btn').on('click', function () {
     // удаляю все тесты из списка
     testList.innerHTML = '';
     generatingTestsList();
+    closeSettingsWindow();
 });
 
 // устанавливаю Название странице
@@ -28,41 +30,46 @@ function setPageTitle() {
 };
 
 // генерация списка тестов
-function generatingTestsList(searchClass, searchLesson) {
+function generatingTestsList() {
     let list = document.getElementById('tests-list');
 
+    let searchClass = request[0];
+    let searchLesson = request[1];
+
     tests.forEach((item, i) => {
-        
-        
 
-        // создаю элемент
-        let listElement = document.createElement('a');
-        let lessonName = document.createElement('p');
-        let aboutLesson = document.createElement('div');
-        let lesson = document.createElement('span');
-        let dash = document.createElement('span');
-        let lessonClass = document.createElement('span');
+        // проверяю тест на соответствие запросу
+        if ((item['class'] == searchClass || searchClass == 'all') && (item['lesson'] == searchLesson || searchLesson == 'all')) {
+            
+            // создаю элемент
+            let listElement = document.createElement('a');
+            let lessonName = document.createElement('p');
+            let aboutLesson = document.createElement('div');
+            let lesson = document.createElement('span');
+            let dash = document.createElement('span');
+            let lessonClass = document.createElement('span');
 
-        // задаю для каждого из созданных элементов класс
-        listElement.classList.add('list-elem');
-        lessonName.classList.add('lesson-name');
-        aboutLesson.classList.add('about-lesson');
+            // задаю для каждого из созданных элементов класс
+            listElement.classList.add('list-elem');
+            lessonName.classList.add('lesson-name');
+            aboutLesson.classList.add('about-lesson');
 
-        listElement.setAttribute('href', 'lesson/index.html#' + i)
+            listElement.setAttribute('href', 'lesson/index.html#' + i)
 
-        // присваиваю контент
-        lessonName.textContent = item['name'];
-        lesson.textContent = item['lessonName'];
-        dash.textContent = ' - ';
-        lessonClass.textContent = item['class'] + 'класс';
+            // присваиваю контент
+            lessonName.textContent = item['name'];
+            lesson.textContent = item['lessonName'];
+            dash.textContent = ' - ';
+            lessonClass.textContent = item['class'] + ' класс';
 
-        // добавляю элементы на страницу
-        list.appendChild(listElement);
-        listElement.appendChild(lessonName);
-        listElement.appendChild(aboutLesson);
-        aboutLesson.appendChild(lesson);
-        aboutLesson.appendChild(dash);
-        aboutLesson.appendChild(lessonClass);
+            // добавляю элементы на страницу
+            list.appendChild(listElement);
+            listElement.appendChild(lessonName);
+            listElement.appendChild(aboutLesson);
+            aboutLesson.appendChild(lesson);
+            aboutLesson.appendChild(dash);
+            aboutLesson.appendChild(lessonClass);
+        }
     })
 };
 
@@ -84,18 +91,18 @@ function getValuesFromSearchSettings() {
     let selectedLesson;
     let selectedClass;
 
-    // получаю значение с выбора урока
-    $('#lessons-list').change(function () {
-        selectedLesson = this.value;
-        request[0] = selectedLesson;
-    });
-
     // получаю значение с выбора класса
     $('.class-list-el').click(function () {
         $('.class-list-el').removeClass('class-list-el-active');
         $(this).addClass('class-list-el-active');
         selectedClass = this.value;
-        request[1] = selectedClass;
+        request[0] = selectedClass;
+    });
+
+    // получаю значение с выбора урока
+    $('#lessons-list').change(function () {
+        selectedLesson = this.value;
+        request[1] = selectedLesson;
     });
 };
 
@@ -105,6 +112,6 @@ function getValuesFromSearchSettings() {
 let request = ['all', 'all'];
 
 setPageTitle()
-generatingTestsList();
+generatingTestsList(request);
 generatingLessonsList();
 getValuesFromSearchSettings()

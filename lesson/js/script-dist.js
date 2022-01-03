@@ -1,9 +1,11 @@
+// даю заголовок странице
 function setPageTitle(lessonName) {
     // определяю тег title
     // устанавливаю в него содержимое с названием сайта и темой урока
     document.querySelector('title').textContent = siteName + ' | ' + lessonName
 }
 
+// создаю тест
 function setTestContent(lessonIndex) {
     // определяю заголовки и задаю им контент
     document.getElementById('title').textContent = tests[lessonIndex]['name'];
@@ -89,6 +91,7 @@ function setTestContent(lessonIndex) {
     });
 };
 
+// проверяю правильность теста
 function checkingTest(rightAnswers){
     let rightAnswersCount = 0;
     let userAnswers = [];
@@ -99,17 +102,37 @@ function checkingTest(rightAnswers){
         let dataFromId = $(".answer-options input:checked")[i].getAttribute('id').slice(7).split('-');
         // dataFromId[0] - номер вопроса, dataFromId[1] - номер ответа
         // добавляю ответы в массив по их индексу
-        userAnswers[dataFromId[0]] = dataFromId[1]
+        userAnswers[dataFromId[0]] = dataFromId[1];
     };
     
     // сравниваю ответы
     for (let i = 0; i < userAnswers.length; i++) {
         if (userAnswers[i] == rightAnswers[i]){
             rightAnswersCount++;
-        }
+        };
     };
     
-    return rightAnswersCount
+    setWindowResult(rightAnswersCount);
+};
+
+// заполняю окошко результатов
+function setWindowResult(rightAnswersCount) {
+    let questionCount = tests[lessonIndex]['questions'].length;
+    let assigment = rightAnswersCount / questionCount;
+    
+    
+        
+    if (assigment < 0.6) assigment = 2;
+    if (0.8 > assigment >= 0.6) assigment = 3;
+    if (1 > assigment >= 0.8) assigment = 4;
+    if (1 == assigment) assigment = 5;
+    
+    document.getElementById('test-theme').textContent += tests[lessonIndex]['name'];
+    document.getElementById('assessment-from-site').textContent += assigment;
+    document.getElementById('rigth-answers-count').textContent += rightAnswersCount + '/' + questionCount;
+    
+    $('.result-window-container').css({'left': '0', 'opacity': '1'});
+    $('body').css('overflow-y', 'hidden');
 };
 
 
