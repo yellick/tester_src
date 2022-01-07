@@ -65,7 +65,6 @@ function setTestContent(lessonIndex) {
         answerOptions.classList.add('answer-options');
         
         // добавляю контент
-        questionText.textContent = i['question'];
         questionNumberContent.textContent = el + 1;
 
         // добавляю элементы на страницу
@@ -75,7 +74,14 @@ function setTestContent(lessonIndex) {
         questionText.appendChild(questionNumber);
         questionNumber.appendChild(questionNumberContent);
         questionText.appendChild(questionTextContent);
+        questionTextContent.innerHTML = i['question'];
     });
+    
+    
+    let question = document.createElement('div');
+    question.classList.add('question');
+    test.appendChild(question);
+    
     
     // создаю кнопку отправки
     let submitBtn = document.createElement('button');
@@ -119,9 +125,7 @@ function checkingTest(rightAnswers){
 function setWindowResult(rightAnswersCount) {
     let questionCount = tests[lessonIndex]['questions'].length;
     let assigment = rightAnswersCount / questionCount;
-    
-    
-        
+            
     if (assigment < 0.6) assigment = 2;
     if (0.8 > assigment >= 0.6) assigment = 3;
     if (1 > assigment >= 0.8) assigment = 4;
