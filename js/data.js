@@ -48,6 +48,12 @@ let tests = [
         ],
         answers: ['2', '1', '0', '3', '0'],
     }, // 1
+    {
+        lesson: lessons[0]['lesson'],
+        lessonName: lessons[0]['lessonName'],
+        name: 'Сложение и вычитание',
+        class: '11',
+    },
     // русский язык
     {
         lesson: lessons[1]['lesson'],
